@@ -4,8 +4,16 @@
 
     --bg-color: #333333;
     --board-color: dodgerblue;
-    --one-color: yellow;
-    --two-color: red;
+    --one-color: gold;
+    --two-color: crimson;
+
+    --pseudo-cells: hidden;
+}
+
+@media (max-width: 1400px) {
+    :root {
+        --cell-size: 75px;
+    }
 }
 
 body {
@@ -21,6 +29,15 @@ body {
     align-items: center;
 }
 
+.pseudo {
+    visibility: var(--pseudo-cells);
+
+    width: var(--cell-size);
+    height: var(--cell-size);
+
+    background-color: var(--bg-color) !important;
+}
+
 .cell {
     display: flex;
     justify-content: center;
@@ -29,14 +46,12 @@ body {
     width: var(--cell-size);
     height: var(--cell-size);
 
+    background-color: var(--board-color);
+
     cursor: pointer;
 }
 
-.game-cell {
-    background-color: var(--board-color);
-}
-
-.game-cell::before {
+.cell::before {
     position: absolute;
 
     content: '';
@@ -47,22 +62,16 @@ body {
     background-color: var(--bg-color);
 }
 
-.game-cell.one,
-.game-cell.two {
-    cursor: not-allowed;
-}
-
 /* Jogador Amarelo */
-.cell.one::before {
+.one::before {
     background-color: var(--one-color);
 }
 
 /* Jogador Vermelho */
-.cell.two::before {
+.two::before {
     background-color: var(--two-color);
 }
 
-.cell:nth-child(7n + 1):hover {
-    /* TODO: Dar um jeito de fazer a peça da vez aparecer na coluna em que o mouse está. Provavelmente vai ter que ser feito em JS. */
-    background-color: var(--board-color);
+.column:hover {
+    --pseudo-cells: visible;
 }
