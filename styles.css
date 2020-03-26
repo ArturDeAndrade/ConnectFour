@@ -8,11 +8,21 @@
     --two-color: crimson;
 
     --pseudo-cells: hidden;
+
+    font-size: 16px;
+    font-family: monospace;
+}
+
+@media (min-width: 1900px) {
+    :root {
+        --cell-size: 125px;
+    }
 }
 
 @media (max-width: 1400px) {
     :root {
         --cell-size: 75px;
+        font-size: 12px;
     }
 }
 
@@ -27,6 +37,8 @@ body {
     grid-template-columns: repeat(7, auto);
     justify-items: center;
     align-items: center;
+
+    margin-top: 4rem;
 }
 
 .pseudo {
@@ -34,8 +46,6 @@ body {
 
     width: var(--cell-size);
     height: var(--cell-size);
-
-    background-color: var(--bg-color) !important;
 }
 
 .cell {
@@ -46,9 +56,11 @@ body {
     width: var(--cell-size);
     height: var(--cell-size);
 
-    background-color: var(--board-color);
-
     cursor: pointer;
+}
+
+.cell:not(.pseudo) {
+    background-color: var(--board-color);
 }
 
 .cell::before {
@@ -74,4 +86,43 @@ body {
 
 .column:hover {
     --pseudo-cells: visible;
+}
+
+/* Tela Final */
+.winning-screen {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    font-size: 4rem;
+
+    background-color: rgba(0, 0, 0, .9);
+    color: var(--board-color);
+}
+
+.winning-screen.show {
+    display: flex;
+}
+
+.winning-screen button {
+    width: 15rem;
+    height: 5rem;
+    border: 4px solid var(--board-color);
+    border-radius: .5rem;
+
+    font-size: 2rem;
+
+    background-color: var(--bg-color);
+    color: var(--board-color);
+}
+
+.winning-screen button:hover {
+    transform: scale(1.1);
 }
