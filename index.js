@@ -171,7 +171,6 @@ function end(draw) {
     if (draw) {
         winningMessage.innerText = "Empate!"
     } else {
-        console.log("vencedor")
         winningMessage.innerText = `${turn ? "Vermelho" : "Amarelo"} Ganhou!`
     }
     winningScreen.classList.add("show")
