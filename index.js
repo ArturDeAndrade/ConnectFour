@@ -13,7 +13,6 @@ const nextC = 'next'
 const filledC = 'filled'
 const fullC = 'full'
 const lastC = 'last'
-let gameOn
 let moves
 let turn
 let currentP
@@ -45,7 +44,6 @@ function start() {
             j++
         }
     })
-    //gameOn = true
     moves = 0
     turn = true
     currentP = turn ? pOne : pTwo
